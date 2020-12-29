@@ -5,7 +5,7 @@
       <button class="add " @click="add" type="submit">追加</button>
        <div v-for="(value,index) in list" :key="index">
          <div class="list-item">
-           <input type="text" v-model="ListText"/>
+           <input type="text" v-model="value.ListText"/>
            <button class="update">更新</button>
            <button class="delete">削除</button>
          </div>
@@ -16,14 +16,13 @@
 export default{
 data(){
   return{
-    Text:"",
     list:[]
   }
 },
 methods:{
   add(){
     this.list.push({
-    ListText: this.Text
+    ListText:this.Text
   });
 }
 }
