@@ -13,20 +13,34 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default{
 data(){
   return{
-    list:[]
+    list:[],
+    Text:"",
+    data:""
   }
 },
 methods:{
   add(){
-    this.list.push({
-    ListText:this.Text
-  });
-}
-}
-};
+    axios
+      .post("https://lit-woodland-10616.herokuapp.com/api/List",{
+        text: this.Text
+      })
+     .get("https://lit-woodland-10616.herokuapp.com/api/List",{
+       text:this.data
+     })
+     .then(response=>{
+       console.log(response);
+       this.list.push({
+         ListText:this.data
+       });
+     });
+     }
+     }
+  };
+
 
 
 </script>
