@@ -18,29 +18,24 @@ export default{
 data(){
   return{
     list:[],
-    Text:"",
-    data:""
-  }
+    Text:""
+  };
 },
 methods:{
   add(){
-    axios
-      .post("https://lit-woodland-10616.herokuapp.com/api/List",{
-        text: this.Text
-      })
-     .get("https://lit-woodland-10616.herokuapp.com/api/List",{
-       text:this.data
-     })
-     .then(response=>{
-       console.log(response);
-       this.list.push({
-         ListText:this.data
-       });
+     axios
+     .post("https://peaceful-lowlands-59483.herokuapp.com/api/list",{
+       Text:this.text
      });
-     }
-     }
-  };
-
+  },
+  created(){
+  let item = axios.get("https://peaceful-lowlands-59483.herokuapp.com/api/list");
+  this.list.push({
+    ListText:item.data
+  })
+},
+}
+};
 
 
 </script>
